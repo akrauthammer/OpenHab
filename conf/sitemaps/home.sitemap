@@ -1,0 +1,24 @@
+sitemap home label="Haydee & Anders"
+{
+    Frame label="Office"{
+        Switch item=Hue_Office
+        Slider item=Hue_Office
+    }
+
+    Frame label="Christmas Lights"{
+        Setpoint item=ChristmasLightOn label="Christmas Lights on from [%2d:00 o'clock]" minValue=1 maxValue=23 step=1 
+		Setpoint item=ChristmasLightOff label="Christmas Lights on til [%2d:00 o'clock]" minValue=2 maxValue=24 step=1 
+        Switch item=ChristmasLightMode mappings=[0="Auto", 1="On", 2="Off"]
+        Switch item=ChristmasOffDuringDayTime
+        Switch item=Outdoor_ChristmasLights
+        //Switch item=Outdoor_ChristmasLight_1
+        //Switch item=Outdoor_ChristmasLight_2
+        Switch item=ChristmasLightForceOn
+    }
+
+    Frame label="Test"{
+        Text item=Sunrise_Time
+        Text item=Sunset_Time
+    }
+
+}

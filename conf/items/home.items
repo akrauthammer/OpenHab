@@ -1,0 +1,29 @@
+
+//Hue Light
+Dimmer Hue_Office "Office Brightness" <slider> {channel="hue:0100:ecb5fa008fe2:2:brightness"}
+Dimmer Hue_Bedroom "Bedroom Brightness" <slider> {channel="hue:0100:ecb5fa008fe2:3:brightness"}
+
+// Sonoff ChristmasLight
+Group:Switch:OR(ON, OFF) Outdoor_ChristmasLights "Christmas Lights" <light>
+Switch Outdoor_ChristmasLight_1 "Christmas Light 1" <light> (Outdoor_ChristmasLights) {mqtt=">[broker:cmnd/ChristmasLight_1/POWER:command:*:default], <[broker:stat/ChristmasLight_1/POWER:state:default]"}
+Switch Outdoor_ChristmasLight_2 "Christmas Light 2" <light> (Outdoor_ChristmasLights) {mqtt=">[broker:cmnd/ChristmasLight_2/POWER:command:*:default], <[broker:stat/ChristmasLight_2/POWER:state:default]"}
+
+Switch ChristmasLightMode "Christmas Light Mode"
+Switch ChristmasLightForceOn "Force Christmas Lights On"
+Switch ChristmasOffDuringDayTime "Turn off Christmas Lights during daytime" <sun_clouds>
+Number ChristmasLightOn "Christmas Lights on [%2d:00 o'clock]" <time>
+Number ChristmasLightOff "Christmas Lights off [%2d:00 o'clock]" <time>
+
+// Sunrise and Sunset
+DateTime Sunrise_Time "Sunrise [%1$tH:%1$tM]" { channel="astro:sun:home:rise#start" }
+DateTime Sunset_Time "Sunset [%1$tH:%1$tM]" { channel="astro:sun:home:set#start" }
+
+//Dimmer	Light2_Dimm		{ channel="hue:0100:1:bulb2:brightness" }
+
+//Group Sonos <player>
+//Player Sonos_bath_Controller   "Controller"                          (Sonos) {channel="sonos:PLAY1:Bath:control"}
+//Dimmer Sonos_bath_Volume       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:PLAY1:Bath:volume"}
+//Switch Sonos_bath_Mute         "Mute"             <soundvolume_mute> (Sonos) {channel="sonos:PLAY1:Bath:mute"}
+//Switch Sonos_bath_LED          "LED"              <switch>           (Sonos) {channel="sonos:PLAY1:Bath:led"}
+//String Sonos_bath_CurrentTrack "Now playing [%s]" <text>             (Sonos) {channel="sonos:PLAY1:Bath:currenttrack"}
+//String Sonos_bath_State        "Status [%s]"      <text>             (Sonos) {channel="sonos:PLAY1:Bath:state"}

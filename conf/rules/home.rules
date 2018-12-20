@@ -1,0 +1,30 @@
+rule "Christmas Light ON/OFF"
+when
+    Time cron "0 0/1 * 1/1 * ? *" or
+    Item ChristmasLightForceOn changed 
+then
+    var int onHrInt = (ChristmasLightOn.state as DecimalType).intValue
+    var int offHrInt = (ChristmasLightOff.state as DecimalType).intValue
+    var DateTime onTime = parse(now.getYear() + "-" + now.getMonthOfYear() + "-" + now.getDayOfMonth() + "T" + (onHrInt-1) + ":59")
+    var DateTime offTime = parse(now.getYear() + "-" + now.getMonthOfYear() + "-" + now.getDayOfMonth() + "T" + (offHrInt-1) + ":59")
+    val long sunrise = (Sunrise_Time.state as DateTimeType).getZonedDateTime.toInstant.toEpochMilli
+    val long sunset = (Sunset_Time.state as DateTimeType).getZonedDateTime.toInstant.toEpochMilli
+    
+    if(ChristmasLightForceOn.state == ON ){
+            sendCommand(Outdoor_ChristmasLights, ON)
+        } else {
+            if  (ChristmasOffDuringDayTime.state == ON){
+                if((now.isAfter(onTime) && now.isBefore(sunrise)) || (now.isAfter(sunset) && now.isBefore(offTime))) {
+                    sendCommand(Outdoor_ChristmasLights, ON)
+                } else {
+                    sendCommand(Outdoor_ChristmasLights, OFF)
+                }
+            } else {
+                if(now.isAfter(onTime) && now.isBefore(offTime)) {
+                    sendCommand(Outdoor_ChristmasLights, ON)
+                } else {
+                    sendCommand(Outdoor_ChristmasLights, OFF)
+                }
+            }
+        }
+end

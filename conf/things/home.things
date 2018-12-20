@@ -1,0 +1,18 @@
+//This is the Things file
+//Bridge hue:bridge:1 [ ipAddress="192.168.0.9" ] {
+//	0100 bulb1 [ lightId="1" ]
+//	0100 bulb2 [ lightId="2" ]
+//  0100 bulb3 [ lightId="3" ]
+//}
+
+
+//hue:0100:ecb5fa008fe2:2:brightness
+//Thing sonos:PLAY1:1 play1 @ bathroom [udn="RINCON_7828CA900F3C01400", refresh=60, notificationVolume=25]
+Thing sonos:PLAY1:Bathroom "Sonos Play1 (Bath Room)" [ udn="RINCON_7828CA900F3C01400", refresh=6]
+Thing sonos:PLAY1:Bedroom "Sonos Play1 (Bed Room)"[ udn="RINCON_949F3EC2AC3001400", refresh=6]
+//Thing mqtt:broker [ host="192.168.0.252",secure=false ]
+//Thing sonos:BEAM:tv [ udn="RINCON_949F3EC2AC3001400", refresh=6]
+
+//Thing mqtt:broker:myBroker [ host="192.168.0.5",secure=false ]
+
+Thing astro:sun:home  [ geolocation="55.676098,12.568337,100", interval=60 ]
