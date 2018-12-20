@@ -1,0 +1,5 @@
+addons/
+openhab-tmpfs.log
+saved/
+tmpfs/
+userdata/

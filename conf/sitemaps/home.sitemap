@@ -13,7 +13,6 @@ sitemap home label="Haydee & Anders"
         Switch item=Outdoor_ChristmasLights
         //Switch item=Outdoor_ChristmasLight_1
         //Switch item=Outdoor_ChristmasLight_2
-        Switch item=ChristmasLightForceOn
     }
 
     Frame label="Test"{
